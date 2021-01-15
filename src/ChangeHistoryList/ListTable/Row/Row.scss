@@ -1,0 +1,14 @@
+.list-table-row{
+    width: 100%;
+    min-height: 48px;
+    display: grid;
+    grid-template-columns: repeat(6 , 1fr);
+    gap:0 12px;
+    align-items: center;
+    &:nth-child(odd){
+        background-color: #fff;
+    }
+    &:nth-child(even){
+        background-color: #eef;
+    }
+}

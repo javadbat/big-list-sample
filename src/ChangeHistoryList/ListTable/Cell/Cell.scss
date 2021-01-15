@@ -1,0 +1,9 @@
+.list-table-cell{
+    box-sizing: border-box;
+    &:first-child{
+        padding-right: 8px;
+    }
+    &:last-child{
+        padding-left: 8px;
+    }
+}
