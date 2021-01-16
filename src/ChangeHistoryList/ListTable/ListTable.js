@@ -1,8 +1,10 @@
+import { observer } from 'mobx-react';
 import React, { useEffect, useRef } from 'react'
 import Cell from './Cell/Cell';
 import DateCell from './DateCell/DateCell';
 import './ListTable.scss';
 import Row from './Row/Row';
+import StartIcon from './StarIcon/StartIcon';
 function ListTable(props) {
     const BodyRef = useRef();
     
@@ -34,7 +36,12 @@ function ListTable(props) {
                     props.data.map((item, index) => {
                         return (
                             <Row key={item.id}>
-                                <Cell>{item.name}</Cell>
+                                <Cell>
+                                    <div className="primary-cell">
+                                        <StartIcon enabled={props.starList.includes(item.id)} toggleStar={()=>{props.toggleStar(item.id)}}></StartIcon>
+                                        <span>{item.name}</span>    
+                                    </div>
+                                </Cell>
                                 <DateCell date={item.date}></DateCell>
                                 <Cell>{item.title}</Cell>
                                 <Cell>{item.field}</Cell>
@@ -49,4 +56,4 @@ function ListTable(props) {
     )
 }
 
-export default ListTable
+export default observer(ListTable);

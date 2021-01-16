@@ -4,9 +4,27 @@
     height: 100%;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: #eaeaea;
     .change-history-list-wrapper{
         width: calc(100% - 8cm);
-        height: calc(100% - 4cm);
+        height: calc(100% - 8cm);
+    }
+    .chnage-history-filter-wrapper{
+        display: flex;
+        width: calc(100% - 8cm);
+        background-color: #fff;
+        padding: 16px;
+        border-radius: 24px;
+        gap:12px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+        box-shadow: 0 3px 7px 5px #dedede;
+        jb-input{
+            width: 100%;
+        }
+        jb-date-input{
+            width: 100%;
+        }
     }
 }

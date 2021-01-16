@@ -7,6 +7,7 @@
     padding: 16px;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
     .list-table-header{
         display: grid;
         grid-template-columns: repeat(6 , 1fr);
@@ -18,6 +19,11 @@
     }
     .list-table-body{
         height: calc(100% - 48px);
-        overflow-y: scroll;
+        overflow-y: auto;
+        .primary-cell{
+            display: flex;
+            align-items: center;
+            gap:8px;
+        }
     }
 }
