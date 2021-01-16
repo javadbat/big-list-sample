@@ -1,4 +1,4 @@
-import { action, makeObservable, observable } from "mobx";
+import { action, makeObservable, observable, toJS } from "mobx";
 import data from '../../data.json';
 class ChangeHistoryListViewModel{
     page = 0;
@@ -23,7 +23,14 @@ class ChangeHistoryListViewModel{
             setDisplayList:action
         });
         this.initFilterParam();
-
+        this.initStarList();
+    }
+    initStarList(){
+        const starListString = localStorage.getItem('star_list');
+        if(starListString){
+            const starList = JSON.parse(starListString);
+            starList.forEach((id)=>{this.starList.push(id)})
+        }
     }
     initFilterParam(){
         const urlParams = new URLSearchParams(window.location.search);
@@ -164,13 +171,13 @@ class ChangeHistoryListViewModel{
        // window.location.search = searchParams.toString();
     }
     toggleStar(id){
-        const index = this.starList.findIndex(id);
+        const index = this.starList.findIndex(x=>x===id);
         if(index === -1){
             this.starList.push(id);
         }else{
             this.starList.splice(index,1);
         }
-        
+        localStorage.setItem('star_list', JSON.stringify(toJS(this.starList)));
     }
 }
 export default ChangeHistoryListViewModel;
